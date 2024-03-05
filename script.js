@@ -4,24 +4,34 @@ function GetComputerChoice() {
     return options[Math.floor(Math.random() * 3)];
 }
 
+let playerScore = 0;
+let AIScore = 0;
+let result;
+
 function SingleRound(playerSelection, computerSelection) {
     switch (true) {
         case playerSelection.toLowerCase() == "rock" && computerSelection == "paper":
+            AIScore++;
             return "AI wins. Paper beats rock!";
             break;
         case playerSelection.toLowerCase() == "rock" && computerSelection == "scissors":
+            playerScore++;
             return "Player wins. Rock beats scissors!";
             break;
         case playerSelection.toLowerCase() == "paper" && computerSelection == "rock":
+            playerScore++;
             return "Player wins. Paper beats rock!";
             break;
         case playerSelection.toLowerCase() == "paper" && computerSelection == "scissors":
+            AIScore++;
             return "AI wins. Scissors beats paper";
             break;
         case playerSelection.toLowerCase() == "scissors" && computerSelection == "rock":
+            AIScore++;
             return "AI wins. Rock beats scissors!";
             break;    
         case playerSelection.toLowerCase() == "scissors" && computerSelection == "paper":
+            playerScore++;
             return "Player wins. Scissors beats paper!";
             break;     
         case playerSelection.toLowerCase() == computerSelection:
@@ -32,6 +42,26 @@ function SingleRound(playerSelection, computerSelection) {
     }
 }
 
+let playerChoice = prompt("Rock, paper or scissors?: ");
+
 function PlayGame() {
-    
+    for (let i = 0; i < 5; i++) {
+        console.log(SingleRound(playerChoice, GetComputerChoice()));
+    }
+
+    if(playerScore > AIScore) {
+        console.log("Player wins!");
+        console.log(`The score is ${playerScore} and ${AIScore} for Player.`);
+    }
+    else if(playerScore < AIScore) {
+        console.log("We are doomed. AI wins...");
+        console.log(`The score is ${AIScore} and ${playerScore} for AI.`);
+    }
+    else {
+        console.log("It's a tie!");
+        console.log(`The score is ${playerScore} and ${AIScore}.`);
+    }
+
 }
+
+PlayGame();
