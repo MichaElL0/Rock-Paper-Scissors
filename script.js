@@ -35,6 +35,8 @@ function SingleRound(playerSelection, computerSelection) {
             return "Player wins. Scissors beats paper!";
             break;     
         case playerSelection.toLowerCase() == computerSelection:
+            AIScore++;
+            playerScore++;
             return "There's a TIE!";
             break;
         default:
@@ -48,6 +50,8 @@ function PlayGame() {
     for (let i = 0; i < 5; i++) {
         console.log(SingleRound(playerChoice, GetComputerChoice()));
     }
+
+    console.log("---------------");
 
     if(playerScore > AIScore) {
         console.log("Player wins!");
