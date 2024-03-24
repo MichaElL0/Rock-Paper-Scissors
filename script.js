@@ -45,8 +45,6 @@ function SingleRound(playerSelection, computerSelection) {
         default:
             break;
     }
-
-
 }
 
 function PlayGame() {
@@ -61,6 +59,24 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach(item => {
     item.addEventListener("click", e => {
-        SingleRound(e.target.value, GetComputerChoice());
+        div.innerHTML =  '<br>' + SingleRound(e.target.value, GetComputerChoice());
+        body.appendChild(div);
+
+        const h2 = document.createElement("h2");
+        const playersH2 = document.querySelector("#playerScore");
+        const AIsH2 = document.querySelector("#AIScore");
+
+        playersH2.textContent = `Player Score: ${playerScore}`;
+        AIsH2.textContent = `AI Score: ${AIScore}`;
+
+        if(playerScore == 5) {
+            h2.textContent = "Player won. There's still hope.";
+            body.appendChild(h2);
+        }
+        else if(AIScore == 5) {
+            h2.textContent = "AI won. There's no hope, we lost...";
+            body.appendChild(h2);
+        }
+
     });
 })
