@@ -8,6 +8,9 @@ let playerScore = 0;
 let AIScore = 0;
 let result;
 
+const body = document.querySelector("body");
+const div = document.createElement("div"); 
+
 function SingleRound(playerSelection, computerSelection) {
     switch (true) {
         case playerSelection.toLowerCase() == "rock" && computerSelection == "paper":
@@ -42,12 +45,22 @@ function SingleRound(playerSelection, computerSelection) {
         default:
             break;
     }
-}
 
-let playerChoice = prompt("Rock, paper or scissors?: ");
+
+}
 
 function PlayGame() {
     
 }
 
-PlayGame();
+// const rock = document.querySelector("#rock");
+// const paper = document.querySelector("#paper");
+// const scissors = document.querySelector("#scissors");
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(item => {
+    item.addEventListener("click", e => {
+        SingleRound(e.target.value, GetComputerChoice());
+    });
+})
