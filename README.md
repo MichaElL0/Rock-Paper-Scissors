@@ -1,5 +1,7 @@
 # Rock-Paper-Scissors
 
+Check it out: https://michaell0.github.io/Rock-Paper-Scissors/
+
 It's a rock paper scissors game...
 Nothing much to say
 
