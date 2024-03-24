@@ -10,6 +10,10 @@ let result;
 
 const body = document.querySelector("body");
 const div = document.createElement("div"); 
+const buttons = document.querySelectorAll("button");
+const h2 = document.createElement("h2");
+const playersH2 = document.querySelector("#playerScore");
+const AIsH2 = document.querySelector("#AIScore");
 
 function SingleRound(playerSelection, computerSelection) {
     switch (true) {
@@ -47,36 +51,32 @@ function SingleRound(playerSelection, computerSelection) {
     }
 }
 
-function PlayGame() {
-    
-}
-
-// const rock = document.querySelector("#rock");
-// const paper = document.querySelector("#paper");
-// const scissors = document.querySelector("#scissors");
-
-const buttons = document.querySelectorAll("button");
-
 buttons.forEach(item => {
     item.addEventListener("click", e => {
         div.innerHTML =  '<br>' + SingleRound(e.target.value, GetComputerChoice());
         body.appendChild(div);
-
-        const h2 = document.createElement("h2");
-        const playersH2 = document.querySelector("#playerScore");
-        const AIsH2 = document.querySelector("#AIScore");
-
         playersH2.textContent = `Player Score: ${playerScore}`;
         AIsH2.textContent = `AI Score: ${AIScore}`;
 
         if(playerScore == 5) {
-            h2.textContent = "Player won. There's still hope.";
+            h2.textContent = "Player won! There's still hope.";
+            body.textContent = "";
             body.appendChild(h2);
+            
         }
         else if(AIScore == 5) {
-            h2.textContent = "AI won. There's no hope, we lost...";
+            h2.textContent = "AI won! There's no hope, we lost...";
+            body.textContent = "";
             body.appendChild(h2);
         }
-
+        else if(AIScore == 5 && playerScore == 5) {
+            body.textContent = "";
+            h2.textContent = "It's a TIE!";
+            body.appendChild(h2);
+        }
+        else {
+            console.log("I don't know");
+        }
     });
-})
+});
+
