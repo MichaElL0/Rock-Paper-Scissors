@@ -47,25 +47,7 @@ function SingleRound(playerSelection, computerSelection) {
 let playerChoice = prompt("Rock, paper or scissors?: ");
 
 function PlayGame() {
-    for (let i = 0; i < 5; i++) {
-        console.log(SingleRound(playerChoice, GetComputerChoice()));
-    }
-
-    console.log("---------------");
-
-    if(playerScore > AIScore) {
-        console.log("Player wins!");
-        console.log(`The score is ${playerScore} and ${AIScore} for Player.`);
-    }
-    else if(playerScore < AIScore) {
-        console.log("We are doomed. AI wins...");
-        console.log(`The score is ${AIScore} and ${playerScore} for AI.`);
-    }
-    else {
-        console.log("It's a tie!");
-        console.log(`The score is ${playerScore} and ${AIScore}.`);
-    }
-
+    
 }
 
 PlayGame();
